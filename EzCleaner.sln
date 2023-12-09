@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34316.72
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EzCleaner", "EzCleaner\EzCleaner.csproj", "{B1AE8AC8-C1A2-4E1D-B262-2D7B4E846965}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B1AE8AC8-C1A2-4E1D-B262-2D7B4E846965}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B1AE8AC8-C1A2-4E1D-B262-2D7B4E846965}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B1AE8AC8-C1A2-4E1D-B262-2D7B4E846965}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B1AE8AC8-C1A2-4E1D-B262-2D7B4E846965}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {788400AA-A9F6-4E13-89EA-BFF7B84E46F2}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,14 @@
+REM START "cleanmgr" cleanmgr /sagerun
+START "delTemp" del %temp%\*.* /s /q
+START "delPrefetch" del C:\Windows\prefetch\*.*/s/q
+START "scannow" sfc /scannow
+START "flushDNS" ipconfig/flushDNS
+START "wsreset" wsreset.exe
+START "ImageCleanup" DISM /Online /Cleanup-Image /RestoreHealth
+START "CheckDisk" chkdsk /f
+
+START "RemoveMaliciousSwFast" mrt /q
+START "RemoveMaliciousSwFull" mrt /q /f
+
+REM START "DefenderFast" "%ProgramFiles%\Windows Defender\MpCmdRun.exe" -Scan -ScanType 1
+REM START "DefenderFull" "%ProgramFiles%\Windows Defender\MpCmdRun.exe" -Scan -ScanType 2
