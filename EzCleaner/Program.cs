@@ -1,4 +1,8 @@
-﻿namespace EzCleaner
+﻿using System.Runtime.CompilerServices;
+using EzCleaner.Handler;
+using EzCleaner.Utilities;
+
+namespace EzCleaner
 {
     internal class Program
     {
@@ -7,20 +11,25 @@
             if (args.Length == 0 || args == null)
             {
                 Console.WriteLine("No arguments have been passed, so the default clean commands and the fast security scan is executed...");
-                Console.WriteLine("Press any key to continue...");
-                Console.ReadKey();
-                ExecuteDefaultCommands();
+                Console.WriteLine("Would you like to start the run now? (y/n)");
+                var execute = Console.ReadLine();
+                if (execute.ToLower().Equals("y"))
+                    ExecutionHandler.ExecuteDefaultCommands();
             }
             else if (args.Length == 1)
             {
                 var firstArgument = args.First();
                 if (firstArgument.Equals("1"))
                 {
-                    ExecuteCleanCommands();
+                    ExecutionHandler.ExecuteCleanCommands();
                 }
                 else if (firstArgument.Equals("2"))
                 {
-                    ExecuteSecurityScan();
+                    ExecutionHandler.ExecuteFastSecurityScan();
+                }
+                else if (firstArgument.Equals("?"))
+                {
+                    Help.Display();
                 }
                 else
                 {
@@ -29,31 +38,39 @@
                     Console.ReadKey();
                 }
             }
-            else
+            else if (args.Length == 2)
             {
-                //TODO: execute the chosen tool with the given parameters
-                //cleanCommandHandler = new CleanCommandHandler(args);
+                var firstArgument = args.First();
+                var secondArgument = args[1];
+                if (firstArgument.Equals("1"))
+                {
+                    var arguments = secondArgument.Split(new char[] { ',' });
+                    ExecutionHandler.ExecuteCustomCommands(arguments);
+                }
+                else if (firstArgument.Equals("2")) 
+                {
+                    if (secondArgument.Equals("fast"))
+                    {
+                        ExecutionHandler.ExecuteFastSecurityScan();
+                    }
+                    else if(secondArgument.Equals("full"))
+                    {
+                        ExecutionHandler.ExecuteFullSecurityScan();
+                    }
+                    else
+                    {
+                        Console.WriteLine("The given argument was invalid. It has to be either 'fast' or 'full' for mode selection...");
+                        Console.WriteLine("Press any key to leave the application...");
+                        Console.ReadKey();
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("The given argument was invalid. It has to be either 1 or 2 for tool selection...");
+                    Console.WriteLine("Press any key to leave the application...");
+                    Console.ReadKey();
+                }
             }
-        }
-
-        private static void ExecuteDefaultCommands()
-        {
-            CleanCommandHandler cleanCommandHandler = new CleanCommandHandler();
-            SecurityCommandHandler securityCommandHandler = new SecurityCommandHandler();
-            cleanCommandHandler.StartCleanCommands();
-            securityCommandHandler.StartSecurityScan();
-        }
-
-        private static void ExecuteCleanCommands()
-        {
-            CleanCommandHandler cleanCommandHandler = new CleanCommandHandler();
-            cleanCommandHandler.StartCleanCommands();
-        }
-
-        private static void ExecuteSecurityScan()
-        {
-            SecurityCommandHandler securityCommandHandler = new SecurityCommandHandler();
-            securityCommandHandler.StartSecurityScan();
         }
     }
 }

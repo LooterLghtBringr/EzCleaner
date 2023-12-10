@@ -1,7 +1,8 @@
 ﻿using System.Diagnostics;
 using System.Text;
+using EzCleaner.Interfaces;
 
-namespace EzCleaner
+namespace EzCleaner.Handler
 {
     internal class SecurityCommandHandler : CommandHandler, IToolHandler
     {

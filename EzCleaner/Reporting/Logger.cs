@@ -1,13 +1,13 @@
 ﻿using System.Text;
 
-namespace EzCleaner
+namespace EzCleaner.Reporting
 {
     internal class Logger
     {
         private static readonly string _logFileName = "EzCleanerResult.txt";
         private static readonly string _logFilePath = "C:\\temp\\";
         private StringBuilder logMessage;
-        public string Argument { get; set; }
+        public string? Argument { get; set; }
 
         public Logger()
         {
@@ -17,7 +17,7 @@ namespace EzCleaner
         public Logger(string argument)
         {
             logMessage = new StringBuilder();
-            this.Argument = argument;
+            Argument = argument;
         }
 
         public StringBuilder AppendNewCleanerRunLine()

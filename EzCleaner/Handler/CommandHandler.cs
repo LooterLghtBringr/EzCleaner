@@ -1,7 +1,9 @@
 ﻿using System.Diagnostics;
 using System.Text;
+using EzCleaner.Interfaces;
+using EzCleaner.Reporting;
 
-namespace EzCleaner
+namespace EzCleaner.Handler
 {
     internal class CommandHandler : IToolHandler
     {
